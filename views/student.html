@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>学生画板页</title>
+  <script src="js/socket.io-1.4.5.js"></script>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body style="background-color: #e5e4e5; overflow-x: hidden;">
+  <div style="margin-top: 10px;">
+    <div style="width: 50px; float: left;">
+      <ul id="toolsul" class="tools">
+        <li id="toolsPencil" data-type="pen" class="active">
+          <i class="icon-tools icon-pen-select" data-default="icon-tools icon-pen-black"></i>
+        </li>
+        <li data-type="arrow">
+          <i class="icon-tools icon-arrow-black" data-default="icon-tools icon-arrow-black"></i>
+        </li>
+        <li data-type="line">
+          <i class="icon-tools icon-line-black" data-default="icon-tools icon-line-black"></i>
+        </li>
+        <li data-type="dottedline">
+          <i class="icon-tools icon-dottedline-black" data-default="icon-tools icon-dottedline-black"></i>
+        </li>
+        <li data-type="circle">
+          <i class="icon-tools icon-circle-black" data-default="icon-tools icon-circle-black"></i>
+        </li>
+        <li data-type="ellipse">
+          <i class="icon-tools icon-ellipse-black" data-default="icon-tools icon-ellipse-black"></i>
+        </li>
+        <li class="hide" data-type="square">
+          <i class="icon-tools icon-square-black" data-default="icon-tools icon-square-black"></i>
+        </li>
+        <li data-type="rectangle">
+          <i class="icon-tools icon-rectangle-black" data-default="icon-tools icon-rectangle-black"></i>
+        </li>
+        <li class="hide" data-type="rightangle">
+          <i class="icon-tools icon-rightangle-black" data-default="icon-tools icon-rightangle-black"></i>
+        </li>
+        <li class="hide" data-type="equilateral">
+          <i class="icon-tools icon-equilateral-black" data-default="icon-tools icon-equilateral-black"></i>
+        </li>
+        <li class="hide" data-type="isosceles">
+          <i class="icon-tools icon-isosceles-black" data-default="icon-tools icon-isosceles-black"></i>
+        </li>
+        <li data-type="text">
+          <i class="icon-tools icon-text-black" data-default="icon-tools icon-text-black"></i>
+        </li>
+        <li data-type="rubber">
+          <i class="icon-tools icon-remove-black" data-default="icon-tools icon-remove-black"></i>
+        </li>
+        <li style="font-size: 14px;" data-type="drag">
+          <i class="" data-default=""></i>
+          选中
+        </li>
+        <li style="font-size: 14px;" data-type="back">
+          <i class="" data-default=""></i>上一步
+        </li>
+        <li style="font-size: 14px;" data-type="next">
+          <i class="" data-default=""></i>下一步
+        </li>
+        <li style="font-size: 14px;" data-type="clear">
+          <i class="" data-default=""></i>清空
+        </li>
+      </ul>
+    </div>
+    <div id="canvasDiv" class="canvasDiv">
+      <canvas id="c" width="1080" height="600">请使用支持HTML5的浏览器</canvas>
+    </div>
+  </div>
+  <script>
+    var socket = io.connect(window.location.origin)
+    socket.on("connect", function () {
+      console.log("Client conneced!Clear board!")
+      socket.emit("clear") // 这里是一个模拟的过程,实际不会发生 connect 就清除的情况
+    })
+  </script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/fabric.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/canvasZoom.js"></script>
+</body>
+
+</html>
